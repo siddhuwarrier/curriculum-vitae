@@ -13,7 +13,7 @@ My CV built with LaTeX, featuring automated PDF generation and deployment via Gi
 - **CI/CD**: GitHub Actions automatically:
   - Compiles the LaTeX source into a PDF on every push to `main`.
   - Increments the version tag (e.g., `v1`, `v2`).
-  - Creates a new [GitHub Release](https://github.com) with the PDF attached.
+  - Creates a new [GitHub Release](https://github.com/siddhuwarrier/curriculum-vitae/releases) with the PDF attached.
 
 ## Local Usage
 
