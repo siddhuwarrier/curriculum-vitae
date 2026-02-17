@@ -1,0 +1,32 @@
+name: Build and Release CV
+
+on:
+  push:
+    branches:
+      - main # Triggers on every push to the main branch
+
+permissions:
+  contents: write # Required to create tags and releases
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv.tex # Ensure this matches your .tex file name
+
+      - name: Create Tag and Release
+        uses: softprops/action-gh-release@v2
+        with:
+          # Automatically creates a tag like v42 based on the workflow run count
+          tag_name: v${{ github.run_number }}
+          files: cv.pdf
+          body: "Automated CV update from commit ${{ github.sha }}"
+          generate_release_notes: true # Auto-summarises your commit messages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

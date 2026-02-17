@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{cv}
+\usepackage{shading}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{pubs.bib}
+\renewcommand*{\bibfont}{\sffamily}
+% 1. Create a macro that wraps content in a link if a URL exists
+\newbibmacro{title:link}[1]{%
+  \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}%
+}
+
+% 2. Apply the macro to the title for all entry types
+\DeclareFieldFormat*{title}{\usebibmacro{title:link}{#1}}
+
+% 3. Hide the separate "URL: ..." line from printing at the end
+\ExecuteBibliographyOptions{url=false}
+\nocite{*}
+
+\begin{document}
+\sffamily
+
+\textbf{\LARGE\bfseries Siddhu Warrier} \\
+\vspace{0.1in}
+\noindent
+\makefield{\faEnvelope}{\href{mailto:siddhu@siddhuw.info}{\texttt{siddhu@siddhuw.info}}}
+\hfill
+\makefield{\faGlobe}{\url{https://www.siddhuw.info}}
+\hfill
+\makefield{\faFlag}{Nationality: British}
+
+\input{profile}
+
+\resheading{Experience}
+\input{cisco}
+\input{lockhart}
+\input{genie}
+
+\resheading{Previous Experience}
+\input{previous_experience}
+
+\resheading{Patents}
+\printbibliography[type=patent, heading=none,resetnumbers=true]
+
+\resheading{Recent Talks}
+\printbibliography[type=unpublished, heading=none,resetnumbers=true]
+
+\resheading{Education}
+\input{education}
+\end{document}

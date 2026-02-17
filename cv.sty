@@ -1,0 +1,99 @@
+\ProvidesPackage{cv}
+
+\usepackage{paralist}
+\usepackage[usenames, dvipsnames]{xcolor}
+\definecolor{SwishLineColour}{HTML}{88AC0B}
+\definecolor{MarkerColour}{HTML}{B6073F}
+
+\RequirePackage[hyphens]{url}
+\RequirePackage{tikz}
+% ----------------------------------------------------------- Hyperlink setup
+\usepackage{hyperref}
+\hypersetup
+{
+  colorlinks=true,
+  urlcolor = blue,
+  pdftitle = {Curriculum Vitae - Siddhu Warrier},
+  pdfauthor = {Siddhu Warrier},
+  pdfcreator  = \LaTeX,
+  pdfproducer = \LaTeX,
+  pdfsubject = {Siddhu Warrier's CV. Updated on 16/02/2026.},
+  pdfkeywords = {Siddhu, Warrier, R\'{e}sum\'{e}, Resume, CV}
+}
+
+\RequirePackage{graphicx}
+\raggedright
+
+\RequirePackage[fixed]{fontawesome5}
+\RequirePackage{simpleicons}
+
+% ----------------------------------------------------------- Margin setup
+
+\setlength{\voffset}{0in}
+\setlength{\paperwidth}{21cm}
+\setlength{\paperheight}{29.7cm}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\textheight}{11in}
+\setlength{\textheight}{10in}
+\setlength{\topmargin}{-0.2in}
+\setlength{\textwidth}{7in}
+\setlength{\topskip}{0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{-0.25in}
+% ----------------------------------------------------------- \usepackage{fullpage}
+\usepackage{shading}
+% \textheight=9.0in
+\pagestyle{empty}
+\raggedbottom \raggedright
+\setlength{\tabcolsep}{0in}
+
+\usepackage{enumitem}
+% Set global defaults for the itemize environment
+\setlist[itemize]{left=0pt, labelsep=0.5em, itemsep=\parsep, topsep=\topsep}
+
+% ----------------------------------------------------------- Custom commands
+\newcommand{\resitem}[1]{
+\item #1 \vspace{-2pt}
+}
+\newcommand{\resheading}[1]{%
+  {\LARGE \parashade[.9]{sharpcorners}{\textbf{#1 \vphantom{p\^{E}}}}}
+  \par\vspace{-0.28in} % Increased negative space to pull the line up
+  \noindent
+  \begin{tikzpicture}[baseline]%\
+    \shade[left color=SwishLineColour!60!white, right color=white] rectangle (\linewidth,2.5pt);
+  \end{tikzpicture}%
+}
+
+% company (possibly with multiple roles)
+\newcommand{\company}[4]{%
+  \noindent
+  \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+    \large \textbf{#1} & #2
+    \if\relax\detokenize{#3}\relax
+    \\[6pt] % No content in #3, just end the line normally
+    \else
+    \\[2pt] % Content exists, add the extra 2pt gap
+    \textbf{#3} & \textit{#4} \\
+    \fi
+  \end{tabular*}
+}
+
+% a single role, only use if you've used rescompany
+\newcommand{\role}[2]{%
+  \vspace{0.025in}
+  \noindent
+  \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \small \textit{#2} \\ [2pt]
+  \end{tabular*}
+}
+\newcommand{\makefield}[2]{\makebox[1.5em]{\color{MarkerColour!80!black}#1} #2\hspace{2em}}
+
+\newcommand{\education}[4]{%
+  \noindent
+  \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textit{#2} \\
+    \textit{#3} & #4 \\
+  \end{tabular*}
+  \vspace{0.05in}
+}
