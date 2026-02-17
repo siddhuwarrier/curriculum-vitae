@@ -1,6 +1,8 @@
-![Build Status](https://github.com/siddhuwarrier/curriculum-vitae/actions/workflows/ci.yml/badge.svg)
+[![Build Status](https://github.com/siddhuwarrier/curriculum-vitae/actions/workflows/ci.yml/badge.svg)](https://github.com/siddhuwarrier/curriculum-vitae/actions/workflows/ci.yml)
 
-# 📄 LaTeX Curriculum Vitae
+**Download a PDF copy of my most up-to-date CV** from the [Releases Page](https://github.com/siddhuwarrier/curriculum-vitae/releases/latest).
+
+# LaTeX Curriculum Vitae
 
 My CV built with LaTeX, featuring automated PDF generation and deployment via GitHub Actions.
 
