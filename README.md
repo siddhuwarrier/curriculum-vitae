@@ -2,7 +2,7 @@
 
 **Download a PDF copy of my most up-to-date CV** from the [Releases Page](https://github.com/siddhuwarrier/curriculum-vitae/releases/latest).
 
-# LaTeX Curriculum Vitae
+# Curriculum Vitae
 
 My CV built with LaTeX, featuring automated PDF generation and deployment via GitHub Actions.
 
