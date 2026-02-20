@@ -14,6 +14,16 @@ def main() -> int:
     object_key = os.environ["R2_OBJECT_KEY"].strip()
     pdf_path = os.environ.get("CV_PDF_PATH", "cv.pdf").strip()
 
+    for name, value in [
+        ("CLOUDFLARE_API_TOKEN", token),
+        ("CLOUDFLARE_ACCOUNT_ID", account_id),
+        ("R2_BUCKET_NAME", bucket_name),
+        ("R2_OBJECT_KEY", object_key),
+    ]:
+        if not value:
+            print(f"Error: {name} is empty or not set.")
+            return 1
+
     with open(pdf_path, "rb") as pdf_file:
         pdf_data = pdf_file.read()
 
