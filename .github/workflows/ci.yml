@@ -20,6 +20,14 @@ jobs:
         with:
           root_file: cv.tex # Ensure this matches your .tex file name
 
+      - name: Upload PDF to Cloudflare R2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          R2_BUCKET_NAME: siddhuw-info
+          R2_OBJECT_KEY: siddhu_warrier_cv.pdf
+        run: python tools/ci/upload_cv_to_cloudflare.py
+
       - name: Create Tag and Release
         uses: softprops/action-gh-release@v2
         with:

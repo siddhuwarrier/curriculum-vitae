@@ -12,8 +12,19 @@ My CV built with LaTeX, featuring automated PDF generation and deployment via Gi
 - **Makefile**: Simple local build system (`make clean all`).
 - **CI/CD**: GitHub Actions automatically:
   - Compiles the LaTeX source into a PDF on every push to `main`.
+  - Uploads the PDF to Cloudflare R2 at `siddhuw.assets/cv.pdf`.
   - Increments the version tag (e.g., `v1`, `v2`).
   - Creates a new [GitHub Release](https://github.com/siddhuwarrier/curriculum-vitae/releases) with the PDF attached.
+
+## Cloudflare R2 Deployment Setup
+
+Add this repository secret before running CI:
+
+- `CLOUDFLARE_API_TOKEN`: token with permission to read your Cloudflare account and write objects to R2.
+- `CLOUDFLARE_ACCOUNT_ID`: your Cloudflare account id for the target bucket.
+
+The workflow uploads `cv.pdf` as `siddhu_warrier_cv.pdf` to bucket `siddhuw-info` on every successful build via `tools/ci/upload_cv_to_cloudflare.py`.
+To make it publicly downloadable, enable public access for the bucket (R2.dev or custom domain).
 
 ## Local Usage
 
